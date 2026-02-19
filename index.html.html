@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taibi Mohamed Yassin - Portfolio IA & ML</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --accent: #3b82f6;
+            --text: #334155;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--light);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><path d="M0 0L100 100M100 0L0 100" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></svg>');
+            opacity: 0.3;
+        }
+
+        header > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1s ease 0.4s both;
+        }
+
+        nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 1rem;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            margin: 0.25rem;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .objective {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border-left: 5px solid var(--primary);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--primary);
+        }
+
+        .timeline-item {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.12);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.5rem;
+            top: 1.5rem;
+            width: 15px;
+            height: 15px;
+            background: var(--primary);
+            border: 3px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px var(--light);
+        }
+
+        .timeline-date {
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-location {
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border-top: 4px solid var(--primary);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tech-tag {
+            background: var(--primary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .accuracy {
+            background: #10b981;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            display: inline-block;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .skill-category li:last-child {
+            border-bottom: none;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            background: white;
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .contact-links a:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .qr-section {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .qr-item {
+            text-align: center;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .qr-placeholder {
+            width: 150px;
+            height: 150px;
+            background: #e2e8f0;
+            border: 2px dashed var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .timeline {
+                padding-left: 2rem;
+            }
+
+            .projects-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Taibi Mohamed Yassin</h1>
+        <p class="subtitle">Ingénieur IA & Machine Learning | Deep Learning | NLP</p>
+        <div class="quote">
+            "L'intelligence artificielle n'est pas une fin en soi, mais un moyen puissant de résoudre des problèmes réels et d'améliorer la vie des gens."
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#objectif">Objectif</a></li>
+            <li><a href="#parcours">Parcours</a></li>
+            <li><a href="#experience">Expérience</a></li>
+            <li><a href="#projets">Projets</a></li>
+            <li><a href="#competences">Compétences</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="objectif">
+            <h2>Objectif Professionnel</h2>
+            <div class="objective">
+                <p><strong>🎯 Immédiat (2026) :</strong> Obtenir un stage de fin d'études (PFE) de 6 mois dans une entreprise innovante en Europe, spécialisée dans l'Intelligence Artificielle, le Machine Learning ou l'ingénierie logicielle. Recherche d'une mission à fort impact technique permettant de concevoir et déployer des solutions IA concrètes.</p>
+                <br>
+                <p><strong>🚀 Moyen terme (2026-2028) :</strong> Devenir Ingénieur Machine Learning / AI Engineer au sein d'une équipe R&D, contribuant au développement de solutions d'IA appliquée (NLP, Computer Vision, systèmes prédictifs) avec un focus sur la mise en production et l'impact métier mesurable.</p>
+                <br>
+                <p><strong>🌟 Long terme (5+ ans) :</strong> Évoluer vers un poste de Lead AI Engineer ou AI Solutions Architect, pilotant des projets d'envergure internationale.</p>
+            </div>
+        </section>
+
+        <section id="parcours">
+            <h2>Parcours Académique</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2025</div>
+                    <div class="timeline-title">5e année - Ingénierie en Intelligence Artificielle</div>
+                    <div class="timeline-location">📍 Université de Castilla-La Mancha, Talavera de la Reina, Espagne (Échange académique)</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2025</div>
+                    <div class="timeline-title">4e année - Ingénierie en Intelligence Artificielle</div>
+                    <div class="timeline-location">📍 Université Internationale de Rabat (UIR), Rabat, Maroc</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2024</div>
+                    <div class="timeline-title">3e année - Ingénierie en Intelligence Artificielle</div>
+                    <div class="timeline-location">📍 Université Euro-Méditerranéenne, Fès, Maroc</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2023</div>
+                    <div class="timeline-title">DUT en Intelligence Artificielle</div>
+                    <div class="timeline-location">📍 École Supérieure de Technologie (EST), Meknès, Maroc</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Expérience Professionnelle</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Juillet - Août 2025</div>
+                    <div class="timeline-title">Stagiaire Développeur et Ingénieur IA</div>
+                    <div class="timeline-location">📍 Smart Automation Technology, Tanger, Maroc</div>
+                    <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                        <li>Conception complète d'un chatbot intelligent pour l'assistance client</li>
+                        <li>Intégration de fonctions NLP : détection d'intention, extraction d'entités, classification de texte</li>
+                        <li>Développement de recommandations personnalisées</li>
+                        <li>Livraison d'une solution IA modulaire et évolutive</li>
+                        <li>Réduction significative de la charge du support manuel</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Avril - Juin 2023</div>
+                    <div class="timeline-title">Stagiaire Amélioration des Processus</div>
+                    <div class="timeline-location">📍 Renault, Tanger, Maroc</div>
+                    <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                        <li>Analyse des causes principales des dysfonctionnements des scanners de codes-barres</li>
+                        <li>Identification d'erreurs opérationnelles et proposition de solutions techniques</li>
+                        <li>Amélioration de la fiabilité du processus de vérification</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projets">
+            <h2>Projets Phares</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-title">🤖 Chatbot Intelligent NLP</div>
+                    <p>Conception complète d'un système de chatbot avec détection d'intention, extraction d'entités, classification de texte et recommandations personnalisées pour l'assistance client.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">Deep Learning</span>
+                    </div>
+                    <p style="margin-top: 1rem;"><strong>Impact :</strong> Réduction significative de la charge du support manuel</p>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">📊 Prédicteur de Fréquentation</div>
+                    <p>Système de prédiction de l'affluence dans un café lors d'événements sportifs majeurs. Analyse de plus de 100 événements pour optimiser l'organisation.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Data Analysis</span>
+                    </div>
+                    <div class="accuracy">✓ 90% de précision | 95% en finale LDC</div>
+                    <p style="margin-top: 1rem;"><strong>Impact :</strong> +20% de satisfaction client</p>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">🎵 Application Musicale Émotionnelle</div>
+                    <p>Application de détection d'émotions faciales recommandant des playlists musicales adaptées à l'état émotionnel de l'utilisateur (heureux, triste, etc.).</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Computer Vision</span>
+                        <span class="tech-tag">Deep Learning</span>
+                        <span class="tech-tag">Python</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">🧠 Prédiction Santé Mentale</div>
+                    <p>Modèle ML prédisant l'état mental à partir de données smartphone : temps d'écran, notifications, heures de sommeil. Plus de 100 réponses collectées.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Data Science</span>
+                        <span class="tech-tag">Python</span>
+                    </div>
+                    <div class="accuracy">✓ 95% de précision</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="competences">
+            <h2>Compétences Techniques</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>🤖 IA & Machine Learning</h3>
+                    <ul>
+                        <li>Machine Learning & Deep Learning</li>
+                        <li>PyTorch / TensorFlow</li>
+                        <li>Natural Language Processing</li>
+                        <li>Computer Vision</li>
+                        <li>Modèles de Langage (LLM)</li>
+                        <li>Algorithmes d'optimisation</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>💻 Développement</h3>
+                    <ul>
+                        <li>Python (Avancé)</li>
+                        <li>Java, C, JEE</li>
+                        <li>SQL (MySQL)</li>
+                        <li>Web Scraping</li>
+                        <li>API RESTful</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>☁️ Cloud & DevOps</h3>
+                    <ul>
+                        <li>AWS</li>
+                        <li>Microsoft Azure</li>
+                        <li>Google Cloud Platform</li>
+                        <li>Architecture Cloud</li>
+                        <li>Déploiement IA</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>📊 Data Science</h3>
+                    <ul>
+                        <li>Pandas / NumPy</li>
+                        <li>Scikit-learn</li>
+                        <li>Analyse de données</li>
+                        <li>Visualisation</li>
+                        <li>Modélisation prédictive</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🌍 Langues</h3>
+                    <ul>
+                        <li>Français (Courant)</li>
+                        <li>Anglais (Courant)</li>
+                        <li>Arabe (Natif)</li>
+                        <li>Espagnol (En cours)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🎯 Soft Skills</h3>
+                    <ul>
+                        <li>Résolution de problèmes</li>
+                        <li>Travail d'équipe</li>
+                        <li>Gestion de projet</li>
+                        <li>Communication technique</li>
+                        <li>Apprentissage continu</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact & Liens</h2>
+            <div class="contact-info">
+                <h3 style="font-size: 2rem; margin-bottom: 1rem;">Restons en contact !</h3>
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;">📍 Talavera de la Reina, Espagne</p>
+                <p style="font-size: 1.1rem;">📧 moha.taibi@edu.umi.ac.ma</p>
+                <p style="font-size: 1.1rem; margin-bottom: 1rem;">📱 +34 612 455 443</p>
+                <p style="font-size: 1.2rem; color: #fbbf24; font-weight: bold;">🎓 Disponible pour PFE à partir de Février 2026</p>
+                <p style="font-size: 1.1rem; margin-top: 0.5rem;">🌍 Mobilité : Partout en Europe</p>
+                
+                <div class="contact-links">
+                    <a href="https://www.linkedin.com/in/mohammed-yassin-taibi-18a505215/" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/yassintb20" target="_blank">GitHub</a>
+                </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Taibi Mohamed Yassin. Tous droits réservés.</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">Conçu avec passion pour l'Intelligence Artificielle 🚀</p>
+    </footer>
+</body>
+</html>
