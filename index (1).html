@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Taibi Mohamed Yassine — AI & ML Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#0a0e0f;--bg2:#0f1518;--bg3:#141c1f;--cyan:#00d4aa;--cyan-dim:#00a882;--cyan-glow:rgba(0,212,170,0.08);--text:#e8f0ee;--text-muted:#7a9490;--text-dim:#3a5450;--border:rgba(0,212,170,0.12);--border-h:rgba(0,212,170,0.3);--card:#0f1a1e;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,14,15,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 3rem;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-logo{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--cyan);letter-spacing:0.05em;}
+.nav-logo span{color:var(--text-muted);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--cyan);}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:8rem 3rem 4rem;max-width:1100px;margin:0 auto;}
+.hero-tag{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--cyan);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:10px;}
+.hero-tag::before{content:'';display:block;width:28px;height:1px;background:var(--cyan);}
+.hero h1{font-size:clamp(3rem,6.5vw,5.5rem);font-weight:800;line-height:1.0;letter-spacing:-0.02em;margin-bottom:0.25rem;}
+.hero h1 .accent{color:var(--cyan);}
+.hero-subtitle{font-size:clamp(0.95rem,1.5vw,1.1rem);color:var(--text-muted);margin:1.75rem 0 2.5rem;font-weight:400;max-width:540px;line-height:1.8;}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 26px;border-radius:4px;font-family:'Syne',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.08em;text-decoration:none;transition:all 0.2s;cursor:pointer;border:1px solid;}
+.btn-primary{background:var(--cyan);color:#0a0e0f;border-color:var(--cyan);}
+.btn-primary:hover{background:var(--cyan-dim);border-color:var(--cyan-dim);}
+.btn-outline{background:transparent;color:var(--cyan);border-color:var(--border-h);}
+.btn-outline:hover{background:var(--cyan-glow);}
+.hero-stats{margin-top:4rem;display:flex;gap:3rem;border-top:1px solid var(--border);padding-top:2rem;}
+.stat-num{font-family:'JetBrains Mono',monospace;font-size:1.9rem;font-weight:600;color:var(--cyan);}
+.stat-label{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;}
+section{max-width:1100px;margin:0 auto;padding:6rem 3rem;}
+.section-tag{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--cyan);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.6rem;}
+.section-title{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;letter-spacing:-0.02em;margin-bottom:3rem;}
+.section-title span{color:var(--cyan);}
+.divider{border:none;border-top:1px solid var(--border);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.about-text p{color:var(--text-muted);line-height:1.85;margin-bottom:1.2rem;font-size:15px;}
+.about-text p strong{color:var(--text);}
+.info-row{display:flex;align-items:center;gap:12px;padding:11px 16px;background:var(--card);border:1px solid var(--border);border-radius:6px;font-size:13px;margin-bottom:10px;transition:border-color 0.2s;}
+.info-row:hover{border-color:var(--border-h);}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);flex-shrink:0;}
+.info-label{color:var(--text-muted);min-width:80px;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;}
+.info-val{color:var(--text);}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;}
+.skill-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:1.5rem;transition:border-color 0.2s;}
+.skill-card:hover{border-color:var(--border-h);}
+.skill-card-title{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--cyan);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:1rem;}
+.tags{display:flex;flex-wrap:wrap;gap:7px;}
+.tag{font-size:11px;padding:3px 9px;background:rgba(0,212,170,0.05);border:1px solid rgba(0,212,170,0.16);border-radius:3px;color:var(--text);font-family:'JetBrains Mono',monospace;}
+.timeline{position:relative;}
+.timeline::before{content:'';position:absolute;left:0;top:10px;bottom:0;width:1px;background:var(--border);}
+.tl-item{position:relative;padding:0 0 3rem 2.5rem;}
+.tl-item::before{content:'';position:absolute;left:-4px;top:10px;width:9px;height:9px;border-radius:50%;background:var(--bg);border:2px solid var(--cyan);}
+.tl-meta{display:flex;align-items:center;gap:10px;margin-bottom:0.5rem;flex-wrap:wrap;}
+.tl-date{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--cyan);letter-spacing:0.1em;}
+.tl-co{font-size:11px;color:var(--text-muted);padding:2px 8px;border:1px solid var(--border);border-radius:3px;}
+.tl-role{font-size:1.05rem;font-weight:700;margin-bottom:0.75rem;}
+.tl-desc{font-size:14px;color:var(--text-muted);line-height:1.8;max-width:680px;}
+.tl-badge{display:inline-block;margin-top:1rem;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--cyan);background:var(--cyan-glow);padding:4px 12px;border-radius:3px;border:1px solid rgba(0,212,170,0.2);}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;}
+.proj-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:2rem;transition:border-color 0.2s,transform 0.2s;display:flex;flex-direction:column;text-decoration:none;color:var(--text);}
+.proj-card:hover{border-color:var(--border-h);transform:translateY(-2px);}
+.proj-num{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-dim);margin-bottom:1rem;}
+.proj-title{font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;}
+.proj-desc{font-size:13px;color:var(--text-muted);line-height:1.75;flex:1;margin-bottom:1.5rem;}
+.proj-result{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--cyan);background:var(--cyan-glow);padding:3px 8px;border-radius:3px;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.contact-text p{font-size:15px;color:var(--text-muted);line-height:1.85;margin-bottom:1rem;}
+.contact-text strong{color:var(--text);}
+.contact-links{display:flex;flex-direction:column;gap:10px;}
+.c-link{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--card);border:1px solid var(--border);border-radius:6px;text-decoration:none;color:var(--text);transition:border-color 0.2s,color 0.2s;font-size:13px;}
+.c-link:hover{border-color:var(--cyan);color:var(--cyan);}
+.c-link-lbl{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--cyan);min-width:64px;letter-spacing:0.1em;}
+footer{text-align:center;padding:2rem;border-top:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-dim);letter-spacing:0.1em;}
+@media(max-width:768px){nav{padding:0 1.5rem;}.nav-links{display:none;}.hero,.section{padding-left:1.5rem;padding-right:1.5rem;}section{padding:4rem 1.5rem;}.about-grid,.contact-grid{grid-template-columns:1fr;gap:2rem;}.hero-stats{gap:1.5rem;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><span>~/</span>yassintb20</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div style="position:relative;overflow:hidden;">
+  <div class="hero">
+    <div class="hero-tag">Available for internship · Feb 2026 · Europe</div>
+    <h1>Taibi Mohamed<br><span class="accent">Yassine.</span></h1>
+    <p class="hero-subtitle">
+      Machine Learning Engineer building end-to-end AI systems —
+      from raw data to deployed prototypes. Focused on NLP, Deep Learning, and applied ML.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">99.89%</div>
+        <div class="stat-label">BERT Accuracy</div>
+      </div>
+      <div>
+        <div class="stat-num">27K</div>
+        <div class="stat-label">Samples Trained</div>
+      </div>
+      <div>
+        <div class="stat-num">3+</div>
+        <div class="stat-label">AI Projects</div>
+      </div>
+      <div>
+        <div class="stat-num">EU</div>
+        <div class="stat-label">Full Mobility</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<section id="about">
+  <div class="section-tag">// 01. about</div>
+  <h2 class="section-title">Who I <span>Am</span></h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a final-year Engineering student specializing in <strong>Artificial Intelligence & Big Data</strong>, currently on academic mobility at the University of Castilla-La Mancha, Spain.</p>
+      <p>I'm passionate about building ML systems that solve real problems — not just notebooks, but <strong>functional prototypes</strong> with clean architecture. My focus: NLP, supervised learning, and end-to-end pipeline design.</p>
+      <p>During my internship at Smart Automation Technologies, I fine-tuned a BERT model on 27,000 samples and built a full chatbot pipeline — achieving <strong>99.89% intent classification accuracy</strong>.</p>
+    </div>
+    <div>
+      <div class="info-row"><div class="dot"></div><span class="info-label">Status</span><span class="info-val">Seeking 6-month internship (PFE)</span></div>
+      <div class="info-row"><div class="dot"></div><span class="info-label">Location</span><span class="info-val">Spain — Full EU mobility</span></div>
+      <div class="info-row"><div class="dot"></div><span class="info-label">Degree</span><span class="info-val">Engineering — AI & Big Data</span></div>
+      <div class="info-row"><div class="dot"></div><span class="info-label">Languages</span><span class="info-val">French (Fluent) · English (Professional)</span></div>
+      <div class="info-row"><div class="dot"></div><span class="info-label">Available</span><span class="info-val">February 2026</span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<section id="skills">
+  <div class="section-tag">// 02. skills</div>
+  <h2 class="section-title">Tech <span>Stack</span></h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-title">Machine Learning</div>
+      <div class="tags">
+        <span class="tag">scikit-learn</span><span class="tag">Pandas</span><span class="tag">NumPy</span>
+        <span class="tag">XGBoost</span><span class="tag">Supervised / Unsupervised</span>
+        <span class="tag">Feature Engineering</span><span class="tag">Model Evaluation</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">NLP & Deep Learning</div>
+      <div class="tags">
+        <span class="tag">BERT / Transformers</span><span class="tag">Hugging Face</span>
+        <span class="tag">spaCy</span><span class="tag">TensorFlow / Keras</span>
+        <span class="tag">Intent Classification</span><span class="tag">NER</span>
+        <span class="tag">Text Preprocessing</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">Programming</div>
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Java</span>
+        <span class="tag">C</span><span class="tag">HTML / CSS</span>
+        <span class="tag">Git & GitHub</span><span class="tag">Jupyter</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">Data & Systems (Academic)</div>
+      <div class="tags">
+        <span class="tag">Hadoop</span><span class="tag">Apache NiFi</span>
+        <span class="tag">Apache Airflow</span><span class="tag">NoSQL</span>
+        <span class="tag">Cloud Computing</span><span class="tag">EDA & Visualization</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<section id="experience">
+  <div class="section-tag">// 03. experience</div>
+  <h2 class="section-title">Work <span>History</span></h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-meta">
+        <span class="tl-date">JUL 2025 — AUG 2025</span>
+        <span class="tl-co">Smart Automation Technologies · Tangier, Morocco</span>
+      </div>
+      <div class="tl-role">AI & Machine Learning Intern</div>
+      <p class="tl-desc">Replaced a rule-based support system with a full intelligent NLP pipeline. Built a chatbot with intent classification, hybrid NER, customer profiling, emotion detection, and recommendation module. Prepared 27,000 samples across 27 intents, fine-tuned BERT, and designed a spaCy + fuzzy matching NER system. Delivered as a functional modular prototype.</p>
+      <span class="tl-badge">99.89% accuracy · 99.84% F1 · 96.2% NER precision</span>
+    </div>
+    <div class="tl-item">
+      <div class="tl-meta">
+        <span class="tl-date">APR 2023 — JUN 2023</span>
+        <span class="tl-co">Renault Group · Tangier, Morocco</span>
+      </div>
+      <div class="tl-role">Process Improvement Intern</div>
+      <p class="tl-desc">Analyzed technical failures in vehicle identification and barcode scanning processes. Proposed data-driven and AI-based solutions to automate identification reliability at industrial scale.</p>
+    </div>
+    <div class="tl-item" style="padding-bottom:0">
+      <div class="tl-meta">
+        <span class="tl-date">AUG 2022</span>
+        <span class="tl-co">Coca-Cola Bottling Company · Tangier, Morocco</span>
+      </div>
+      <div class="tl-role">Observation Intern</div>
+      <p class="tl-desc">Gained exposure to large-scale industrial production systems, information system interactions, quality standards, and high-throughput operational workflows.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<section id="projects">
+  <div class="section-tag">// 04. projects</div>
+  <h2 class="section-title">Featured <span>Work</span></h2>
+  <div class="projects-grid">
+    <a href="https://github.com/yassintb20/BERT-Customer-Support-Bot" target="_blank" class="proj-card">
+      <div class="proj-num">01 — NLP / BERT</div>
+      <div class="proj-title">BERT Customer Support Bot</div>
+      <p class="proj-desc">End-to-end intelligent support system with intent classification, hybrid NER, customer profiling, emotion detection, and recommendation engine. 27K samples, 27 intent classes.</p>
+      <div class="tags" style="margin-bottom:10px;">
+        <span class="tag">BERT</span><span class="tag">spaCy</span><span class="tag">HuggingFace</span><span class="tag">Python</span>
+      </div>
+      <span class="proj-result">99.89% Accuracy</span>
+    </a>
+    <a href="https://github.com/yassintb20/Emotion-to-Music" target="_blank" class="proj-card">
+      <div class="proj-num">02 — Deep Learning / CV</div>
+      <div class="proj-title">MoodTuneAI — Emotion to Music</div>
+      <p class="proj-desc">Real-time facial expression recognition with a music recommendation engine that generates playlists matching detected emotional states across 7 emotion classes.</p>
+      <div class="tags" style="margin-bottom:10px;">
+        <span class="tag">CNN</span><span class="tag">TensorFlow</span><span class="tag">OpenCV</span><span class="tag">Python</span>
+      </div>
+      <span class="proj-result">7-class emotion detection</span>
+    </a>
+    <a href="https://github.com/yassintb20/smartphone-mental-health-analysis" target="_blank" class="proj-card">
+      <div class="proj-num">03 — ML / Data Science</div>
+      <div class="proj-title">Mental Well-being Prediction</div>
+      <p class="proj-desc">EDA and feature engineering on smartphone behavioral data to detect patterns correlated with mental state variations. Multiple supervised ML models benchmarked.</p>
+      <div class="tags" style="margin-bottom:10px;">
+        <span class="tag">scikit-learn</span><span class="tag">Pandas</span><span class="tag">Seaborn</span><span class="tag">XGBoost</span>
+      </div>
+      <span class="proj-result">5+ models compared</span>
+    </a>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<section id="contact">
+  <div class="section-tag">// 05. contact</div>
+  <h2 class="section-title">Let's <span>Connect</span></h2>
+  <div class="contact-grid">
+    <div class="contact-text">
+      <p>I'm actively looking for a <strong>6-month internship (PFE)</strong> starting February 2026 as an ML Engineer or Data Scientist, anywhere in Europe.</p>
+      <p>If you're working on an interesting AI problem and need someone who can go from data to prototype — let's talk.</p>
+      <a href="mailto:taibiyassin2026@gmail.com" class="btn btn-primary" style="margin-top:1.25rem;">Send an Email</a>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:taibiyassin2026@gmail.com" class="c-link"><span class="c-link-lbl">EMAIL</span>taibiyassin2026@gmail.com</a>
+      <a href="https://linkedin.com/in/mohammed-yassin-taibi" target="_blank" class="c-link"><span class="c-link-lbl">LINKEDIN</span>mohammed-yassin-taibi</a>
+      <a href="https://github.com/yassintb20" target="_blank" class="c-link"><span class="c-link-lbl">GITHUB</span>yassintb20</a>
+      <a href="tel:+34612455443" class="c-link"><span class="c-link-lbl">PHONE</span>+34 612 455 443</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Taibi Mohamed Yassine &nbsp;·&nbsp; yassintb20.github.io/portfolio</footer>
+
+</body>
+</html>
